@@ -97,7 +97,7 @@ $RECYCLE.BIN/
 
 .vscode/
 
-*.blend*
+*.blend[1-9]
 
 Recordings/
 
