@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 419005281}
   - component: {fileID: 419005280}
   - component: {fileID: 419005283}
+  - component: {fileID: 419005285}
   - component: {fileID: 419005284}
   m_Layer: 0
   m_Name: Main Camera
@@ -246,13 +247,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419005279}
-  m_LocalRotation: {x: 0.12931517, y: 0.86953324, z: -0.36017245, w: 0.31219444}
-  m_LocalPosition: {x: 0, y: 19.72, z: -10}
+  m_LocalRotation: {x: 0, y: -0.92387956, z: 0.38268343, w: 0}
+  m_LocalPosition: {x: -24, y: 18, z: 54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 140.5, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -180, z: 0}
 --- !u!114 &419005283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +297,101 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f96a394f2dd0e4cbcee5a594b2c301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speed:
+    _pan: 20
+    _rotate: 50
+    _zoom: 1
+--- !u!114 &419005285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419005279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 488a18161dc8eb94ab41065bb4973f5e,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 419005284}
+        m_MethodName: OnPan
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9791a358-79ea-423a-967f-2860f920dfbf
+    m_ActionName: Camera/Pan[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 419005284}
+        m_MethodName: OnRotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1b777005-18c1-41cf-8926-6e7c56617a32
+    m_ActionName: Camera/Rotate[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 419005284}
+        m_MethodName: OnToggleRotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnToggleRotate
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d8cbd571-5ea9-4672-83a5-de941ac7e288
+    m_ActionName: Camera/DoRotate[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 419005284}
+        m_MethodName: OnZoom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 61b0273b-137b-4471-92d4-36d89e6795ab
+    m_ActionName: Camera/Zoom[/Mouse/scroll]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Camera
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &460468742
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +558,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722081078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.1, y: 0, z: 6.15}
+  m_LocalPosition: {x: -25.26, y: 0, z: 38.18}
   m_LocalScale: {x: 15, y: 0, z: 9.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -554,7 +650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990261410}
   m_LocalRotation: {x: 0.3551298, y: 0.34422168, z: -0.14258128, w: 0.85735923}
-  m_LocalPosition: {x: 18.3, y: 27.34, z: -40.61}
+  m_LocalPosition: {x: 0.83, y: 17.3, z: 6.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
