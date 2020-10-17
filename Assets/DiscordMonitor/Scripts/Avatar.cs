@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using TMPro;
 
 namespace DiscordMonitor {
@@ -8,8 +9,15 @@ namespace DiscordMonitor {
       this._nameText.text = name;
     }
 
+    public void PathTo(GameObject region) {
+      this._navMeshAgent.SetDestination(region.transform.position);
+    }
+
     [SerializeField]
     private TextMeshProUGUI _nameText = null;
+
+    [SerializeField]
+    private NavMeshAgent _navMeshAgent = null;
   }
 
 }
