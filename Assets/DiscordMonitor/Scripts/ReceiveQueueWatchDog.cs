@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 namespace DiscordMonitor {
+
   public class ReceiveQueueWatchDog : MonoBehaviour {
     [SerializeField]
     private WSClientManager _clientManager = null;
@@ -60,4 +61,5 @@ namespace DiscordMonitor {
       }
     }
   }
+
 }
