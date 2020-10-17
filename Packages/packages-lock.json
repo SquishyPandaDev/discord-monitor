@@ -1,13 +1,13 @@
 {
   "dependencies": {
     "com.siccity.gltfutility": {
-      "version": "https://github.com/siccity/gltfutility.git",
+      "version": "https://github.com/SquishyPandaDev/GLTFUtility.git#sqpd/master",
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0-preview"
+        "com.unity.nuget.newtonsoft-json": "2.0.0"
       },
-      "hash": "b17d82fb423f7851bd0673e1b711db636de99a37"
+      "hash": "c174410bca8323894482cd48efb60d13c2d6b370"
     },
     "com.unity.ide.vscode": {
       "version": "1.2.2",
@@ -17,7 +17,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0-preview",
+      "version": "2.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
