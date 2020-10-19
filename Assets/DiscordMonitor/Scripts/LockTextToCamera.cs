@@ -2,6 +2,7 @@
 using UnityEditor;
 
 namespace DiscordMonitor {
+
   public class LockTextToCamera : MonoBehaviour {
     private Vector3 _lookPoint = Vector3.zero;
 
@@ -11,4 +12,5 @@ namespace DiscordMonitor {
       );
     }
   }
+
 }

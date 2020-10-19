@@ -41,10 +41,12 @@ namespace DiscordMonitor {
 
         var spawnBounds = this._spawnArea.localScale / 2;
 
+        var spawnPosition = this._spawnArea.position;
+
         avatarObject.transform.position = new Vector3(
-          Random.Range(-spawnBounds.x, spawnBounds.x),
+          spawnPosition.x + Random.Range(-spawnBounds.x, spawnBounds.x),
           0,
-          Random.Range(-spawnBounds.z, spawnBounds.z)
+          spawnPosition.z + Random.Range(-spawnBounds.z, spawnBounds.z)
         );
 
         var avatar = avatarObject.GetComponent<Avatar>();
