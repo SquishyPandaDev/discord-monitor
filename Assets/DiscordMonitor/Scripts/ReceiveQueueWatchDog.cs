@@ -4,7 +4,7 @@ namespace DiscordMonitor {
 
   public class ReceiveQueueWatchDog : MonoBehaviour {
     [SerializeField]
-    private WSClientManager _clientManager = null;
+    private WSClientManager _wsClientManager = null;
 
     [SerializeField]
     [Tooltip("How many frame(s) to keep messages in queue before dropping")]
@@ -25,14 +25,14 @@ namespace DiscordMonitor {
 
       // do we need to seed a start frame message
       if(this._startFrameMessage == null) {
-        this._clientManager.TryReceivePeek(
+        this._wsClientManager.TryReceivePeek(
           out this._startFrameMessage
         );
 
          return;
       }
 
-      var peekResult = this._clientManager.TryReceivePeek(
+      var peekResult = this._wsClientManager.TryReceivePeek(
         out WS.Message.Receive.Base currentMessage
       );
 
@@ -43,7 +43,7 @@ namespace DiscordMonitor {
             == currentMessage.timeStamp;
 
         if(isSameMessage) {
-          this._clientManager.TryReceiveDequeue(out _);
+          this._wsClientManager.TryReceiveDequeue(out _);
 
           Debug.LogWarning(
             Library
