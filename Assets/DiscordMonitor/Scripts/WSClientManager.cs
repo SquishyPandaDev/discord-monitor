@@ -12,14 +12,18 @@ namespace DiscordMonitor {
     private const string _COMPONENT_NAME =
       nameof(Library.ComponentMessage.WSClientManager);
 
+    [Space]
     [SerializeField]
-    [Space(10)]
+    private Avatar.Simulator _avatarSimulator = null;
+
+    [Space]
+    [SerializeField]
     private Host _host = new Host();
 
-    [SerializeField]
-    [Space(10)]
+    [Space]
     [Name("Receive Buffer Size in KB")]
     [Min(1)]
+    [SerializeField]
     private int _receiveBufferSize = 1;
 
     private string _server => (
@@ -32,6 +36,11 @@ namespace DiscordMonitor {
     private string _serverUri => $"ws://{this._server}:{this._host.port}";
 
     private void OnEnable() {
+      if(this._avatarSimulator.DoSimulate) {
+        this.enabled = false;
+        return;
+      }
+
       if(this._webSocketClient == null) {
         this._webSocketClient = new WS.Client(
           this._serverUri,
@@ -56,17 +65,19 @@ namespace DiscordMonitor {
       );
     }
 
+    private void OnDisable() {
+      if(!this._avatarSimulator.DoSimulate) {
+        _ = this._webSocketClient.DisconnectAsync();
+      }
+    }
+
     private void Update() {
       if(this._webSocketClient.NeedToClose) {
         _ = this._webSocketClient.DisconnectAsync();
       }
     }
 
-    private void OnDisable() {
-      _ = this._webSocketClient.DisconnectAsync();
-    }
-
-    public WS.Client _webSocketClient = null;
+    private WS.Client _webSocketClient = null;
 
     [System.Serializable]
     private class Host {

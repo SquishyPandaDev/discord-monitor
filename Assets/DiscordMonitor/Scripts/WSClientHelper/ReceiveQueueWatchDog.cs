@@ -3,17 +3,29 @@
 namespace DiscordMonitor {
 
   public class ReceiveQueueWatchDog : MonoBehaviour {
-    [SerializeField]
-    private WSClientManager _wsClientManager = null;
-
-    [SerializeField]
-    [Tooltip("How many frame(s) to keep messages in queue before dropping")]
-    [Min(1)]
-    private uint _messageLifetime = 4;
-
     private uint _frameCount = 0;
 
     private WS.Message.Receive.Base _startFrameMessage;
+
+    [Space]
+    [SerializeField]
+    private Avatar.Simulator _avatarSimulator = null;
+
+    [Space]
+    [SerializeField]
+    private WSClientManager _wsClientManager = null;
+
+    [Space]
+    [Tooltip("How many frame(s) to keep messages in queue before dropping")]
+    [Min(1)]
+    [SerializeField]
+    private uint _messageLifetime = 4;
+
+    private void OnEnable() {
+      if(this._avatarSimulator.DoSimulate) {
+        this.enabled = false;
+      }
+    }
 
     private void Update() {
       this._frameCount++;

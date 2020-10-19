@@ -19,7 +19,7 @@ namespace DiscordMonitor {
       var transform = gameObject.transform;
 
       while(transform.parent != null) {
-        isRegion = transform.parent.name == "Region";
+        isRegion = transform.parent.name == "Regions";
 
         if(isRegion) break;
 
