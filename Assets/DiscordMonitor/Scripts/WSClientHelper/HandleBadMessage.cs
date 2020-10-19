@@ -1,13 +1,25 @@
 ﻿using UnityEngine;
 
 namespace DiscordMonitor {
+namespace WSClientHelper {
 
   using WSReceive     = WS.Message.Receive;
   using WSReceiveKind = WS.Message.Receive.Kind;
 
   public class HandleBadMessage : MonoBehaviour {
+    [Space]
+    [SerializeField]
+    private Avatar.Simulator _avatarSimulator = null;
+
+    [Space]
     [SerializeField]
     private WSClientManager _wsClientManager = null;
+
+    private void OnEnable() {
+      if(this._avatarSimulator.DoSimulate) {
+        this.enabled = false;
+      }
+    }
 
     private void Update() {
       this._HandleNotJson();
@@ -58,4 +70,6 @@ namespace DiscordMonitor {
       );
     }
   }
+
+}
 }

@@ -2,22 +2,37 @@
 using UnityEngine;
 
 namespace DiscordMonitor {
+namespace Avatar {
 
   using WSReceive     = WS.Message.Receive;
   using WSReceiveKind = WS.Message.Receive.Kind;
 
-  public class AvatarManager : MonoBehaviour {
+  [AddComponentMenu("Discord Monitor/Avatar Manager")]
+  public class Manager : MonoBehaviour {
+    [Space]
+    [SerializeField]
+    private Simulator _simulator = null;
+
+    [Space]
     [SerializeField]
     private GameObject _avatarPrefab = null;
 
+    [Space]
     [SerializeField]
     private WSClientManager _wsClientManager = null;
 
+    [Space]
     [SerializeField]
     private Transform _spawnArea = null;
 
-    private Dictionary<string, Avatar> _avatarById =
-      new Dictionary<string, Avatar>();
+    private Dictionary<string, Actor> _avatarById =
+      new Dictionary<string, Actor>();
+
+    private void OnEnable() {
+      if(this._simulator.DoSimulate) {
+        this.enabled = false;
+      }
+    }
 
     private void Update() {
       var filterResult = Library.Util.FilterMessage(
@@ -49,7 +64,7 @@ namespace DiscordMonitor {
           spawnPosition.z + Random.Range(-spawnBounds.z, spawnBounds.z)
         );
 
-        var avatar = avatarObject.GetComponent<Avatar>();
+        var avatar = avatarObject.GetComponent<Actor>();
 
         avatar.SetName(message.name);
 
@@ -61,4 +76,5 @@ namespace DiscordMonitor {
     }
   }
 
+}
 }

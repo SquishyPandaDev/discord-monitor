@@ -59,14 +59,15 @@ namespace DiscordMonitor {
       }
     }
 
-    [SerializeField]
-    private Speed _speed = new Speed();
-
     private bool _doRotate = false;
 
     private Vector2 _panDirection;
     private float   _rotation;
     private float   _zoom;
+
+    [Space]
+    [SerializeField]
+    private Speed _speed = new Speed();
 
     [System.Serializable]
     private class Speed {
